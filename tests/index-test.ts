@@ -1,5 +1,6 @@
 import {expect} from 'chai';
 import {Serializable} from '../src/Serializable';
+import {NumberValueSerializable} from "../examples/Number";
 
 const {describe, it} = global;
 
@@ -30,5 +31,11 @@ describe('obj', () => {
         myObject.numeric = 123;
         expect(myObject.serialized.value).to.equals("hello");
         expect(myObject.serialized.numeric).to.equals(123);
+
+        let numberObject = new NumberValueSerializable(6);
+        let numberObject2 = new NumberValueSerializable();
+        expect(numberObject.serialized.value).to.equals(6);
+        numberObject2.deserialize(numberObject.serialized);
+        expect(numberObject2.value).to.equals(6);
     });
 });
