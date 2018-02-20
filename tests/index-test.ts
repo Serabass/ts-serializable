@@ -1,8 +1,32 @@
-import { expect } from 'chai';
-import obj from '../src/index';
+import {expect} from 'chai';
+import {Serializable} from '../src/index';
 
-const { describe, it } = global;
+const {describe, it} = global;
+
+interface IMyClass {
+    value: string;
+    numeric: number;
+}
+
+class MyClass extends Serializable<IMyClass> {
+    public value: string;
+    public numeric: number;
+
+    public serialize(): IMyClass {
+        let { value, numeric} = this;
+        return { value, numeric };
+    }
+
+    public deserialize(data: IMyClass): void {
+    }
+}
 
 describe('obj', () => {
-  it('works', () => expect(obj).to.be.ok);
+    it('works', () => {
+        let myObject = new MyClass();
+        myObject.value = "hello";
+        myObject.numeric = 123;
+        expect(myObject.serialized.value).to.equals("hello");
+        expect(myObject.serialized.numeric).to.equals(123);
+    });
 });
