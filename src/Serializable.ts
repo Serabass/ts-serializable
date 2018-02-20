@@ -14,10 +14,11 @@ export abstract class Serializable<T> implements ISerializable<T> {
     }
 
     public toJSON(compact: boolean = true): string {
+        let serialized = this.serialized;
         if (compact) {
-            return JSON.stringify(this.serialize());
+            return JSON.stringify(serialized);
         }
 
-        return JSON.stringify(this.serialize(), null, 4);
+        return JSON.stringify(serialized, null, 4);
     }
 }
