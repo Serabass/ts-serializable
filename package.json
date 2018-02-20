@@ -1,5 +1,5 @@
 {
-  "name": "typescript-module-boilerplate",
+  "name": "ts-serializable",
   "version": "2.0.0",
   "scripts": {
     "test": "mocha --opts tests/mocha.opts tests/**/*-test.{ts,tsx} && npm run lint && npm run build",
