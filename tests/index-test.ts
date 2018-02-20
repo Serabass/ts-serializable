@@ -1,5 +1,5 @@
 import {expect} from 'chai';
-import {Serializable} from '../src/index';
+import {Serializable} from '../src/Serializable';
 
 const {describe, it} = global;
 
@@ -18,6 +18,8 @@ class MyClass extends Serializable<IMyClass> {
     }
 
     public deserialize(data: IMyClass): void {
+        this.value = data.value;
+        this.numeric = data.numeric;
     }
 }
 
